@@ -1,0 +1,169 @@
+{
+  "uid" : "b21a5724d97e9462",
+  "name" : "test_add_shopping_trolley",
+  "fullName" : "test_firmware.TestShoppingTrolley#test_add_shopping_trolley",
+  "historyId" : "95e619fc2350f1e66a8a8524977f1a5f",
+  "time" : {
+    "start" : 1628851433334,
+    "stop" : 1628851433343,
+    "duration" : 9
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 'success' == 'failed'\n  - failed\n  + success",
+  "statusTrace" : "self = <test_firmware.TestShoppingTrolley object at 0x000002B0D921F310>\n\n    @allure.story('加入购物车')  # 用story说明用户场景，可以理解为JIRA中的Story\n    def test_add_shopping_trolley(self):\n        login('刘春明', '密码')  # 步骤1，调用“step函数”\n        with allure.step(\"浏览商品\"):  # 步骤2，step的参数将会打印到测试报告中\n            allure.attach('笔记本', '商品1')  # attach可以打印一些附加信息\n            allure.attach('手机', '商品2')\n        with allure.step(\"点击商品\"):  # 步骤3\n            pass\n        with allure.step(\"校验结果\"):  # 步骤4\n            allure.attach('添加购物车成功', '期望结果')\n            allure.attach('添加购物车失败', '实际结果')\n>           assert 'success' == 'failed'\nE           AssertionError: assert 'success' == 'failed'\nE             - failed\nE             + success\n\ntest_firmware.py:21: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert 'success' == 'failed'\n  - failed\n  + success",
+    "statusTrace" : "self = <test_firmware.TestShoppingTrolley object at 0x000002B0D921F310>\n\n    @allure.story('加入购物车')  # 用story说明用户场景，可以理解为JIRA中的Story\n    def test_add_shopping_trolley(self):\n        login('刘春明', '密码')  # 步骤1，调用“step函数”\n        with allure.step(\"浏览商品\"):  # 步骤2，step的参数将会打印到测试报告中\n            allure.attach('笔记本', '商品1')  # attach可以打印一些附加信息\n            allure.attach('手机', '商品2')\n        with allure.step(\"点击商品\"):  # 步骤3\n            pass\n        with allure.step(\"校验结果\"):  # 步骤4\n            allure.attach('添加购物车成功', '期望结果')\n            allure.attach('添加购物车失败', '实际结果')\n>           assert 'success' == 'failed'\nE           AssertionError: assert 'success' == 'failed'\nE             - failed\nE             + success\n\ntest_firmware.py:21: AssertionError",
+    "steps" : [ {
+      "name" : "用户登录",
+      "time" : {
+        "start" : 1628851433335,
+        "stop" : 1628851433335,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "user",
+        "value" : "'刘春明'"
+      }, {
+        "name" : "pwd",
+        "value" : "'密码'"
+      } ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "浏览商品",
+      "time" : {
+        "start" : 1628851433335,
+        "stop" : 1628851433337,
+        "duration" : 2
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "1fa60427e79c70",
+        "name" : "商品1",
+        "source" : "1fa60427e79c70.attach",
+        "type" : "text/plain",
+        "size" : 9
+      }, {
+        "uid" : "d24c71befdf20021",
+        "name" : "商品2",
+        "source" : "d24c71befdf20021.attach",
+        "type" : "text/plain",
+        "size" : 6
+      } ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 2,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "点击商品",
+      "time" : {
+        "start" : 1628851433337,
+        "stop" : 1628851433337,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "校验结果",
+      "time" : {
+        "start" : 1628851433337,
+        "stop" : 1628851433342,
+        "duration" : 5
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: assert 'success' == 'failed'\n  - failed\n  + success\n",
+      "statusTrace" : "  File \"D:\\GIT\\jenkins\\pytest\\test_firmware.py\", line 21, in test_add_shopping_trolley\n    assert 'success' == 'failed'\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "775559ee610c4c37",
+        "name" : "期望结果",
+        "source" : "775559ee610c4c37.attach",
+        "type" : "text/plain",
+        "size" : 21
+      }, {
+        "uid" : "90899da4f877327d",
+        "name" : "实际结果",
+        "source" : "90899da4f877327d.attach",
+        "type" : "text/plain",
+        "size" : 21
+      } ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : true,
+      "attachmentsCount" : 2,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 4,
+    "hasContent" : true,
+    "stepsCount" : 4
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "firmware"
+  }, {
+    "name" : "story",
+    "value" : "加入购物车"
+  }, {
+    "name" : "suite",
+    "value" : "test_firmware"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestShoppingTrolley"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-LEG04IAI"
+  }, {
+    "name" : "thread",
+    "value" : "19504-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_firmware"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "b21a5724d97e9462.json",
+  "parameterValues" : [ ]
+}

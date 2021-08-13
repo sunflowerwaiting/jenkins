@@ -1,8 +1,8 @@
 {
   "total" : 2,
   "items" : [ {
-    "uid" : "fbee53df8487942ba5333ea9eebb3863",
-    "name" : "test_allure",
+    "uid" : "46ae1e0284fba6d6b70f3509bbfa270b",
+    "name" : "test_AI",
     "statistic" : {
       "failed" : 1,
       "broken" : 1,
@@ -12,15 +12,15 @@
       "total" : 7
     }
   }, {
-    "uid" : "e11bc6392381ef1d825bd019b9e8cfa7",
-    "name" : "test_demo",
+    "uid" : "6b5a1cb12f29280a9609654c0e0b2853",
+    "name" : "test_firmware",
     "statistic" : {
-      "failed" : 0,
+      "failed" : 1,
       "broken" : 0,
-      "skipped" : 0,
-      "passed" : 2,
+      "skipped" : 1,
+      "passed" : 1,
       "unknown" : 0,
-      "total" : 2
+      "total" : 3
     }
   } ]
 }

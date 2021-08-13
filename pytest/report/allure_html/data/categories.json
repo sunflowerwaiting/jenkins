@@ -7,12 +7,12 @@
       "name" : "FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'",
       "children" : [ {
         "name" : "test_loginc",
-        "uid" : "eb41b1cb000da5a6",
+        "uid" : "bb42a0bd890b14db",
         "parentUid" : "713a5355d35908e48fb3112edcfe1cae",
         "status" : "broken",
         "time" : {
-          "start" : 1628850867667,
-          "stop" : 1628850867667,
+          "start" : 1628851432992,
+          "stop" : 1628851432992,
           "duration" : 0
         },
         "flaky" : false,
@@ -28,19 +28,36 @@
       "name" : "AssertionError: assert '1' == 1",
       "children" : [ {
         "name" : "test_logind",
-        "uid" : "db581a0898e174bc",
+        "uid" : "7e4b892d3e66a9a1",
         "parentUid" : "7f61e51e828afbbae8d9807e1240aa49",
         "status" : "failed",
         "time" : {
-          "start" : 1628850867988,
-          "stop" : 1628850867990,
-          "duration" : 2
+          "start" : 1628851433302,
+          "stop" : 1628851433303,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       } ],
       "uid" : "7f61e51e828afbbae8d9807e1240aa49"
+    }, {
+      "name" : "AssertionError: assert 'success' == 'failed'\n  - failed\n  + success",
+      "children" : [ {
+        "name" : "test_add_shopping_trolley",
+        "uid" : "b21a5724d97e9462",
+        "parentUid" : "ad83777f33b11e04ba6744abf0118919",
+        "status" : "failed",
+        "time" : {
+          "start" : 1628851433334,
+          "stop" : 1628851433343,
+          "duration" : 9
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "ad83777f33b11e04ba6744abf0118919"
     } ],
     "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
   } ]

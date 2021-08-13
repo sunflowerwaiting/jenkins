@@ -1,11 +1,11 @@
 {
-  "uid" : "ba3c0e1ceee1f8eb",
+  "uid" : "cb5e6a321eafe503",
   "name" : "test_loginb",
-  "fullName" : "test_allure.Test_login#test_loginb",
-  "historyId" : "be5c3e2a6cf3ec6aa37b6cacdc65fc54",
+  "fullName" : "test_AI.Test_login#test_loginb",
+  "historyId" : "868e0ae286208d53af1e9df1d230265d",
   "time" : {
-    "start" : 1628850867659,
-    "stop" : 1628850867661,
+    "start" : 1628851432987,
+    "stop" : 1628851432989,
     "duration" : 2
   },
   "status" : "passed",
@@ -16,31 +16,31 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "2f49b3297bdd7c42",
+      "uid" : "b8d609dafe53419e",
       "name" : "HTML测试模块",
-      "source" : "2f49b3297bdd7c42.html",
+      "source" : "b8d609dafe53419e.html",
       "type" : "text/html",
       "size" : 31
     } ],
     "parameters" : [ ],
     "shouldDisplayMessage" : false,
     "attachmentsCount" : 1,
-    "stepsCount" : 0,
-    "hasContent" : true
+    "hasContent" : true,
+    "stepsCount" : 0
   },
   "afterStages" : [ ],
   "labels" : [ {
     "name" : "story",
     "value" : "密码正确，登录成功"
   }, {
-    "name" : "feature",
-    "value" : "This is AI testcase"
-  }, {
     "name" : "severity",
     "value" : "critical"
   }, {
+    "name" : "feature",
+    "value" : "This is AI testcase"
+  }, {
     "name" : "suite",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "subSuite",
     "value" : "Test_login"
@@ -49,7 +49,7 @@
     "value" : "LAPTOP-LEG04IAI"
   }, {
     "name" : "thread",
-    "value" : "17748-MainThread"
+    "value" : "19504-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -58,7 +58,7 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
@@ -73,6 +73,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "ba3c0e1ceee1f8eb.json",
+  "source" : "cb5e6a321eafe503.json",
   "parameterValues" : [ ]
 }

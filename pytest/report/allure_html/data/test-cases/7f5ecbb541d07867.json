@@ -1,12 +1,12 @@
 {
-  "uid" : "159102096336bde1",
+  "uid" : "7f5ecbb541d07867",
   "name" : "test_logina",
-  "fullName" : "test_allure.Test_login#test_logina",
-  "historyId" : "f3b34efc18395a6dd541e6bd1d9b0085",
+  "fullName" : "test_AI.Test_login#test_logina",
+  "historyId" : "076f1ce684a77ca3cb161fd781ea4060",
   "time" : {
-    "start" : 1628850867650,
-    "stop" : 1628850867653,
-    "duration" : 3
+    "start" : 1628851432980,
+    "stop" : 1628851432984,
+    "duration" : 4
   },
   "status" : "passed",
   "flaky" : false,
@@ -16,31 +16,31 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "f15920daa6d46c68",
+      "uid" : "590e10b486a784c",
       "name" : "文本信息",
-      "source" : "f15920daa6d46c68.txt",
+      "source" : "590e10b486a784c.txt",
       "type" : "text/plain",
       "size" : 21
     } ],
     "parameters" : [ ],
     "shouldDisplayMessage" : false,
     "attachmentsCount" : 1,
-    "stepsCount" : 0,
-    "hasContent" : true
+    "hasContent" : true,
+    "stepsCount" : 0
   },
   "afterStages" : [ ],
   "labels" : [ {
     "name" : "feature",
     "value" : "This is AI testcase"
   }, {
-    "name" : "severity",
-    "value" : "blocker"
-  }, {
     "name" : "story",
     "value" : "用户名正确，登录成功"
   }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
     "name" : "suite",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "subSuite",
     "value" : "Test_login"
@@ -49,7 +49,7 @@
     "value" : "LAPTOP-LEG04IAI"
   }, {
     "name" : "thread",
-    "value" : "17748-MainThread"
+    "value" : "19504-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -58,7 +58,7 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
@@ -73,6 +73,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "159102096336bde1.json",
+  "source" : "7f5ecbb541d07867.json",
   "parameterValues" : [ ]
 }

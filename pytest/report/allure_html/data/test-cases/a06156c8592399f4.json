@@ -1,12 +1,12 @@
 {
-  "uid" : "12270fe0f2b4a5ea",
-  "name" : "test_loging",
-  "fullName" : "test_allure.Test_login#test_loging",
-  "historyId" : "eca256338267680eee6502c5ccd763b0",
+  "uid" : "a06156c8592399f4",
+  "name" : "test_edit_shopping_trolley",
+  "fullName" : "test_firmware.TestShoppingTrolley#test_edit_shopping_trolley",
+  "historyId" : "c2297625b81b369e91c95e3003f02f49",
   "time" : {
-    "start" : 1628850868012,
-    "stop" : 1628850868013,
-    "duration" : 1
+    "start" : 1628851433351,
+    "stop" : 1628851433351,
+    "duration" : 0
   },
   "status" : "passed",
   "flaky" : false,
@@ -14,23 +14,23 @@
   "beforeStages" : [ ],
   "afterStages" : [ ],
   "labels" : [ {
-    "name" : "story",
-    "value" : "密码为空，登录失败"
-  }, {
     "name" : "feature",
-    "value" : "This is AI testcase"
+    "value" : "firmware"
+  }, {
+    "name" : "story",
+    "value" : "修改购物车"
   }, {
     "name" : "suite",
-    "value" : "test_allure"
+    "value" : "test_firmware"
   }, {
     "name" : "subSuite",
-    "value" : "Test_login"
+    "value" : "TestShoppingTrolley"
   }, {
     "name" : "host",
     "value" : "LAPTOP-LEG04IAI"
   }, {
     "name" : "thread",
-    "value" : "17748-MainThread"
+    "value" : "19504-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -39,7 +39,7 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "test_allure"
+    "value" : "test_firmware"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
@@ -54,6 +54,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "12270fe0f2b4a5ea.json",
+  "source" : "a06156c8592399f4.json",
   "parameterValues" : [ ]
 }

@@ -1,12 +1,12 @@
 {
-  "uid" : "266f17e7408aad9e",
-  "name" : "test_logine",
-  "fullName" : "test_allure.Test_login#test_logine",
-  "historyId" : "560e1788a542ee43a8106c23719b8238",
+  "uid" : "1f05f3f0441910a4",
+  "name" : "test_loging",
+  "fullName" : "test_AI.Test_login#test_loging",
+  "historyId" : "58f0ec21f7eafed47e4523bd9efb0006",
   "time" : {
-    "start" : 1628850868002,
-    "stop" : 1628850868002,
-    "duration" : 0
+    "start" : 1628851433329,
+    "stop" : 1628851433330,
+    "duration" : 1
   },
   "status" : "passed",
   "flaky" : false,
@@ -14,17 +14,14 @@
   "beforeStages" : [ ],
   "afterStages" : [ ],
   "labels" : [ {
+    "name" : "story",
+    "value" : "密码为空，登录失败"
+  }, {
     "name" : "feature",
     "value" : "This is AI testcase"
   }, {
-    "name" : "story",
-    "value" : "用户不存在，登录失败"
-  }, {
-    "name" : "severity",
-    "value" : "trivial"
-  }, {
     "name" : "suite",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "subSuite",
     "value" : "Test_login"
@@ -33,7 +30,7 @@
     "value" : "LAPTOP-LEG04IAI"
   }, {
     "name" : "thread",
-    "value" : "17748-MainThread"
+    "value" : "19504-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -42,25 +39,21 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
   } ],
   "parameters" : [ ],
-  "links" : [ {
-    "name" : "我的博客管理平台",
-    "url" : "https://blog.csdn.net/weixin_44275820/article/details/105169871",
-    "type" : "test_case"
-  } ],
+  "links" : [ ],
   "hidden" : false,
   "retry" : false,
   "extra" : {
-    "severity" : "trivial",
+    "severity" : "normal",
     "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "266f17e7408aad9e.json",
+  "source" : "1f05f3f0441910a4.json",
   "parameterValues" : [ ]
 }

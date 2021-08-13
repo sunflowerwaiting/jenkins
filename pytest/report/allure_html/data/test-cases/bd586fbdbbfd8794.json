@@ -1,0 +1,66 @@
+{
+  "uid" : "bd586fbdbbfd8794",
+  "name" : "test_logine",
+  "fullName" : "test_AI.Test_login#test_logine",
+  "historyId" : "ab0e392665801d18f8559e18376a1acc",
+  "time" : {
+    "start" : 1628851433313,
+    "stop" : 1628851433313,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "用户不存在，登录失败"
+  }, {
+    "name" : "severity",
+    "value" : "trivial"
+  }, {
+    "name" : "feature",
+    "value" : "This is AI testcase"
+  }, {
+    "name" : "suite",
+    "value" : "test_AI"
+  }, {
+    "name" : "subSuite",
+    "value" : "Test_login"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-LEG04IAI"
+  }, {
+    "name" : "thread",
+    "value" : "19504-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_AI"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "我的博客管理平台",
+    "url" : "https://blog.csdn.net/weixin_44275820/article/details/105169871",
+    "type" : "test_case"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "trivial",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "bd586fbdbbfd8794.json",
+  "parameterValues" : [ ]
+}

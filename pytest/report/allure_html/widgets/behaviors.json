@@ -1,5 +1,5 @@
 {
-  "total" : 3,
+  "total" : 2,
   "items" : [ {
     "uid" : "e74d0ce22c2c0ec6ecadb83b96401f90",
     "name" : "This is AI testcase",
@@ -10,6 +10,17 @@
       "passed" : 5,
       "unknown" : 0,
       "total" : 7
+    }
+  }, {
+    "uid" : "88e03e5edcc09224ddc89b0ad9f3c669",
+    "name" : "firmware",
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 1,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 3
     }
   } ]
 }

@@ -1,11 +1,11 @@
 {
-  "uid" : "4f9703a1ea13846a",
+  "uid" : "6afcbd0dda499b84",
   "name" : "test_loginf",
-  "fullName" : "test_allure.Test_login#test_loginf",
-  "historyId" : "1cdd2e5c91a72c3da281098fa65f2209",
+  "fullName" : "test_AI.Test_login#test_loginf",
+  "historyId" : "dcd2ee9440aff01970f2a4ac1ead934d",
   "time" : {
-    "start" : 1628850868007,
-    "stop" : 1628850868007,
+    "start" : 1628851433318,
+    "stop" : 1628851433318,
     "duration" : 0
   },
   "status" : "passed",
@@ -21,7 +21,7 @@
     "value" : "密码已锁定，登录失败"
   }, {
     "name" : "suite",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "subSuite",
     "value" : "Test_login"
@@ -30,7 +30,7 @@
     "value" : "LAPTOP-LEG04IAI"
   }, {
     "name" : "thread",
-    "value" : "17748-MainThread"
+    "value" : "19504-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -39,7 +39,7 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "test_allure"
+    "value" : "test_AI"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
@@ -54,6 +54,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "4f9703a1ea13846a.json",
+  "source" : "6afcbd0dda499b84.json",
   "parameterValues" : [ ]
 }
