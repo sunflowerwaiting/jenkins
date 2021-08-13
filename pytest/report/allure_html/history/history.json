@@ -1,0 +1,175 @@
+{
+  "63fbe30458e8a0b5f522d6d56329b1a1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "eb41b1cb000da5a6",
+      "status" : "broken",
+      "statusDetails" : "FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'",
+      "time" : {
+        "start" : 1628850867667,
+        "stop" : 1628850867667,
+        "duration" : 0
+      }
+    } ]
+  },
+  "88f9f8bae1d76194820ce90e08256cbd" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "db581a0898e174bc",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert '1' == 1",
+      "time" : {
+        "start" : 1628850867988,
+        "stop" : 1628850867990,
+        "duration" : 2
+      }
+    } ]
+  },
+  "eca256338267680eee6502c5ccd763b0" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "12270fe0f2b4a5ea",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850868012,
+        "stop" : 1628850868013,
+        "duration" : 1
+      }
+    } ]
+  },
+  "f3b34efc18395a6dd541e6bd1d9b0085" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "159102096336bde1",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850867650,
+        "stop" : 1628850867653,
+        "duration" : 3
+      }
+    } ]
+  },
+  "2259593640d2bae6b57ebc9c2ce352ea" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f4efc77e70b653e7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850868023,
+        "stop" : 1628850868023,
+        "duration" : 0
+      }
+    } ]
+  },
+  "560e1788a542ee43a8106c23719b8238" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "266f17e7408aad9e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850868002,
+        "stop" : 1628850868002,
+        "duration" : 0
+      }
+    } ]
+  },
+  "1cdd2e5c91a72c3da281098fa65f2209" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4f9703a1ea13846a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850868007,
+        "stop" : 1628850868007,
+        "duration" : 0
+      }
+    } ]
+  },
+  "be5c3e2a6cf3ec6aa37b6cacdc65fc54" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ba3c0e1ceee1f8eb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850867659,
+        "stop" : 1628850867661,
+        "duration" : 2
+      }
+    } ]
+  },
+  "2c892e76324cecc135c4bb7083beb140" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d115b4710a6a8281",
+      "status" : "passed",
+      "time" : {
+        "start" : 1628850868018,
+        "stop" : 1628850868019,
+        "duration" : 1
+      }
+    } ]
+  }
+}

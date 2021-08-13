@@ -1,0 +1,88 @@
+{
+  "uid" : "eb41b1cb000da5a6",
+  "name" : "test_loginc",
+  "fullName" : "test_allure.Test_login#test_loginc",
+  "historyId" : "63fbe30458e8a0b5f522d6d56329b1a1",
+  "time" : {
+    "start" : 1628850867667,
+    "stop" : 1628850867667,
+    "duration" : 0
+  },
+  "status" : "broken",
+  "statusMessage" : "FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'",
+  "statusTrace" : "self = <test_allure.Test_login object at 0x00000166196C6F40>\n\n    @allure.story(\"用户名错误，登录失败\")\n    # --allure-link-pattern=issue:https://blog.csdn.net/weixin_44275820/article/details/105169871/issue/{}\n    @allure.issue(\"10086\",\"这是一个bug，需要修复\")\n    @allure.severity(allure.severity_level.NORMAL)    #正常问题\n    def test_loginc(self):\n>       allure.attach.file(\"./picture/微信头像.jpg\",name=\"这是一个图片\",attachment_type=allure.attachment_type.JPG)    #添加图片\n\ntest_allure.py:25: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\_allure.py:182: in file\n    plugin_manager.hook.attach_file(source=source, name=name, attachment_type=attachment_type, extension=extension)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\hooks.py:286: in __call__\n    return self._hookexec(self, self.get_hookimpls(), kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:93: in _hookexec\n    return self._inner_hookexec(hook, methods, kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:84: in <lambda>\n    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_pytest\\listener.py:226: in attach_file\n    self.allure_logger.attach_file(uuid4(), source, name=name, attachment_type=attachment_type, extension=extension)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\reporter.py:114: in attach_file\n    plugin_manager.hook.report_attached_file(source=source, file_name=file_name)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\hooks.py:286: in __call__\n    return self._hookexec(self, self.get_hookimpls(), kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:93: in _hookexec\n    return self._inner_hookexec(hook, methods, kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:84: in <lambda>\n    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\logger.py:53: in report_attached_file\n    shutil.copy2(source, destination)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py:435: in copy2\n    copyfile(src, dst, follow_symlinks=follow_symlinks)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nsrc = './picture/微信头像.jpg'\ndst = 'D:\\\\GIT\\\\jenkins\\\\pytest\\\\report\\\\result_allure\\\\d702d4e8-74cc-45eb-9197-a0a9af6797ea-attachment.jpg'\n\n    def copyfile(src, dst, *, follow_symlinks=True):\n        \"\"\"Copy data from src to dst in the most efficient way possible.\n    \n        If follow_symlinks is not set and src is a symbolic link, a new\n        symlink will be created instead of copying the file it points to.\n    \n        \"\"\"\n        sys.audit(\"shutil.copyfile\", src, dst)\n    \n        if _samefile(src, dst):\n            raise SameFileError(\"{!r} and {!r} are the same file\".format(src, dst))\n    \n        file_size = 0\n        for i, fn in enumerate([src, dst]):\n            try:\n                st = _stat(fn)\n            except OSError:\n                # File most likely does not exist\n                pass\n            else:\n                # XXX What about other special files? (sockets, devices...)\n                if stat.S_ISFIFO(st.st_mode):\n                    fn = fn.path if isinstance(fn, os.DirEntry) else fn\n                    raise SpecialFileError(\"`%s` is a named pipe\" % fn)\n                if _WINDOWS and i == 0:\n                    file_size = st.st_size\n    \n        if not follow_symlinks and _islink(src):\n            os.symlink(os.readlink(src), dst)\n        else:\n>           with open(src, 'rb') as fsrc, open(dst, 'wb') as fdst:\nE           FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'\n\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py:264: FileNotFoundError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'",
+    "statusTrace" : "self = <test_allure.Test_login object at 0x00000166196C6F40>\n\n    @allure.story(\"用户名错误，登录失败\")\n    # --allure-link-pattern=issue:https://blog.csdn.net/weixin_44275820/article/details/105169871/issue/{}\n    @allure.issue(\"10086\",\"这是一个bug，需要修复\")\n    @allure.severity(allure.severity_level.NORMAL)    #正常问题\n    def test_loginc(self):\n>       allure.attach.file(\"./picture/微信头像.jpg\",name=\"这是一个图片\",attachment_type=allure.attachment_type.JPG)    #添加图片\n\ntest_allure.py:25: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\_allure.py:182: in file\n    plugin_manager.hook.attach_file(source=source, name=name, attachment_type=attachment_type, extension=extension)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\hooks.py:286: in __call__\n    return self._hookexec(self, self.get_hookimpls(), kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:93: in _hookexec\n    return self._inner_hookexec(hook, methods, kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:84: in <lambda>\n    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_pytest\\listener.py:226: in attach_file\n    self.allure_logger.attach_file(uuid4(), source, name=name, attachment_type=attachment_type, extension=extension)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\reporter.py:114: in attach_file\n    plugin_manager.hook.report_attached_file(source=source, file_name=file_name)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\hooks.py:286: in __call__\n    return self._hookexec(self, self.get_hookimpls(), kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:93: in _hookexec\n    return self._inner_hookexec(hook, methods, kwargs)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pluggy\\manager.py:84: in <lambda>\n    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\allure_commons\\logger.py:53: in report_attached_file\n    shutil.copy2(source, destination)\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py:435: in copy2\n    copyfile(src, dst, follow_symlinks=follow_symlinks)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nsrc = './picture/微信头像.jpg'\ndst = 'D:\\\\GIT\\\\jenkins\\\\pytest\\\\report\\\\result_allure\\\\d702d4e8-74cc-45eb-9197-a0a9af6797ea-attachment.jpg'\n\n    def copyfile(src, dst, *, follow_symlinks=True):\n        \"\"\"Copy data from src to dst in the most efficient way possible.\n    \n        If follow_symlinks is not set and src is a symbolic link, a new\n        symlink will be created instead of copying the file it points to.\n    \n        \"\"\"\n        sys.audit(\"shutil.copyfile\", src, dst)\n    \n        if _samefile(src, dst):\n            raise SameFileError(\"{!r} and {!r} are the same file\".format(src, dst))\n    \n        file_size = 0\n        for i, fn in enumerate([src, dst]):\n            try:\n                st = _stat(fn)\n            except OSError:\n                # File most likely does not exist\n                pass\n            else:\n                # XXX What about other special files? (sockets, devices...)\n                if stat.S_ISFIFO(st.st_mode):\n                    fn = fn.path if isinstance(fn, os.DirEntry) else fn\n                    raise SpecialFileError(\"`%s` is a named pipe\" % fn)\n                if _WINDOWS and i == 0:\n                    file_size = st.st_size\n    \n        if not follow_symlinks and _islink(src):\n            os.symlink(os.readlink(src), dst)\n        else:\n>           with open(src, 'rb') as fsrc, open(dst, 'wb') as fdst:\nE           FileNotFoundError: [Errno 2] No such file or directory: './picture/微信头像.jpg'\n\nc:\\users\\kui li\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py:264: FileNotFoundError",
+    "steps" : [ ],
+    "attachments" : [ {
+      "name" : "这是一个图片",
+      "type" : "image/jpg",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 1,
+    "stepsCount" : 0,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "This is AI testcase"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "用户名错误，登录失败"
+  }, {
+    "name" : "suite",
+    "value" : "test_allure"
+  }, {
+    "name" : "subSuite",
+    "value" : "Test_login"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-LEG04IAI"
+  }, {
+    "name" : "thread",
+    "value" : "17748-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_allure"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "这是一个bug，需要修复",
+    "url" : "10086",
+    "type" : "issue"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "eb41b1cb000da5a6.json",
+  "parameterValues" : [ ]
+}

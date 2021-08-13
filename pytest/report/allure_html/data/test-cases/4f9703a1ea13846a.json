@@ -1,0 +1,59 @@
+{
+  "uid" : "4f9703a1ea13846a",
+  "name" : "test_loginf",
+  "fullName" : "test_allure.Test_login#test_loginf",
+  "historyId" : "1cdd2e5c91a72c3da281098fa65f2209",
+  "time" : {
+    "start" : 1628850868007,
+    "stop" : 1628850868007,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "This is AI testcase"
+  }, {
+    "name" : "story",
+    "value" : "密码已锁定，登录失败"
+  }, {
+    "name" : "suite",
+    "value" : "test_allure"
+  }, {
+    "name" : "subSuite",
+    "value" : "Test_login"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-LEG04IAI"
+  }, {
+    "name" : "thread",
+    "value" : "17748-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_allure"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "4f9703a1ea13846a.json",
+  "parameterValues" : [ ]
+}
