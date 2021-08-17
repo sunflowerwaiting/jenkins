@@ -1,0 +1,329 @@
+def riqi=''
+import java.text.SimpleDateFormat
+pipeline {
+    agent any
+        
+    stages {
+        stage('Step1: cmcu') {
+            steps {
+                echo '----------start building cmcu----------'
+                sh '''
+                mkdir 11
+                rm -r *
+
+                git clone -b support_kuaishou git@192.168.16.6:firmware/cmcu.git --recursive
+                pwd
+                cd cmcu
+                git checkout -f support_kuaishou
+                git submodule update --init --recursive
+                echo '000000000000000000'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+
+                mkdir -p build
+                cd build
+                export XTENSA_CORE=VastaiMcuSv100
+                pwd
+                cmake ..
+                make
+                chmod 644 firmware_cmcu_.bin
+                mv firmware_cmcu_.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/cmcu/firmware_cmcu_.bin /home/dubuntu/aidevdev/thelatest/cmcu.bin
+                '''
+				echo '---------cmcu build 1----------'
+            }
+        }
+        
+        stage('Step2: lmcu') {
+            steps {
+                echo '----------start building lmcu----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                git clone git@192.168.16.6:firmware/lmcu.git --recursive
+                pwd
+                cd lmcu
+                git checkout -f support_kuaishou
+                git submodule update --init --recursive
+                echo '000000000000000000'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                pwd
+                mkdir -p build
+                cd build
+                export XTENSA_CORE=VastaiMcuSv100
+                pwd
+                cmake ..
+                make
+                chmod 644 firmware_lmcu_.bin
+                mv firmware_lmcu_.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/lmcu/firmware_lmcu_.bin /home/dubuntu/aidevdev/thelatest/lmcu.bin
+                '''
+				echo '---------lmcu build 2----------'
+            }
+        }
+        
+        stage('Step3: smcu cb rst bl') {
+            steps {
+                echo '----------start building smcu----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/smcu_dev']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'smcu']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:firmware/smcu.git']]])
+                sh '''
+                pwd
+                cd smcu
+                git checkout -f smcu_dev
+                
+                echo '000000000000000000 smcu'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                cd vastai_smcu_fw
+                mkdir -p build
+                cd build
+                pwd
+                cmake ..
+                make 
+                xt-objcopy  -O binary --xtensa-core=VastaiMcuSv100 smcu_fw.out smcu_fw.bin
+                chmod 644 smcu_fw.bin
+                mv smcu_fw.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/smcu/vastai_smcu_fw/smcu_fw.bin /home/dubuntu/aidevdev/thelatest/smcu.bin
+                
+                echo '000000000000000000 commonboot resetvector'
+                cd /var/lib/jenkins/workspace/bin_aidevdev/smcu/common_boot
+                mkdir -p build
+                cd build
+                pwd
+                cmake ..
+                make
+                xt-objcopy  -O ihex --xtensa-core=VastaiMcuSv100 commboot.out commboot.hex
+                chmod 644 commboot.hex
+                cd ../
+                chmod 755 hex2bin.py
+                sudo ./hex2bin.py
+                cp /var/lib/jenkins/workspace/bin_aidevdev/smcu/common_boot/common_boot.bin /home/dubuntu/aidevdev/thelatest
+                cp /var/lib/jenkins/workspace/bin_aidevdev/smcu/common_boot/reset_vector.bin /home/dubuntu/aidevdev/thelatest
+                
+                echo '000000000000000000 bootlodader'
+                cd /var/lib/jenkins/workspace/bin_aidevdev/smcu/vastai_bl1_silicon
+                mkdir -p build
+                cd build
+                pwd
+                cmake ..
+                make 
+                xt-objcopy  -O binary --xtensa-core=VastaiMcuSv100 smcu_bl1.out smcu_bl1.bin
+                chmod 644 smcu_bl1.bin
+                mv smcu_bl1.bin ../vastai_bl1.bin
+                cp /var/lib/jenkins/workspace/bin_aidevdev/smcu/vastai_bl1_silicon/vastai_bl1.bin /home/dubuntu/aidevdev/thelatest
+                
+                '''
+				echo '---------smcu commbt reset bootld ----------'
+            }
+        }
+        
+        stage('Step4: vdmcu') {
+            steps {
+                echo '----------start building vdmcu----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'vdmcu']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:firmware/vdmcu.git']]])
+                sh '''
+                pwd
+                cd vdmcu
+                git checkout -f master
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                cd vdmcu
+                mkdir -p build
+                cd build
+                cp ../CMakeLists.txt .
+                pwd
+                cmake .
+                make 
+                xt-objcopy  -O binary --xtensa-core=VastaiMcuSv100 vdmcu.out vdmcu.bin
+                chmod 644 vdmcu.bin
+                mv vdmcu.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/vdmcu/vdmcu/vdmcu.bin /home/dubuntu/aidevdev/thelatest
+                '''
+				echo '---------vdmcu build 4----------'
+            }
+        }
+        
+        stage('Step5: vemcu') {
+            steps {
+                echo '----------start building vemcu----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/encoder_dev']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'vemcu']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:firmware/vemcu.git']]])
+                sh '''
+                pwd
+                cd vemcu
+                git checkout -f encoder_dev
+                echo '000000000000000000'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                cd prj
+                mkdir -p build
+                cd build
+                pwd
+                cmake ..
+                make 
+                xt-objcopy  -O binary --xtensa-core=VastaiMcuSv100 vemcu.out vemcu.bin
+                chmod 644 vemcu.bin
+                mv vemcu.bin ../
+                mv vemcu.out ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/vemcu/prj/vemcu.bin /home/dubuntu/aidevdev/thelatest
+                '''
+				echo '---------vemcu build 5----------'
+            }
+        }
+        
+        stage('Step6: odsp') {
+            steps {
+                echo '----------start building odsp----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/release']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'odsp']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:firmware/aidsp.git']]])
+                sh '''
+                pwd
+                cd odsp
+                git checkout -f release
+                echo '000000000000000000'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                cd build
+                mkdir -p bin
+                cd bin
+                pwd
+                cmake -DEN_LOG=0 ../
+                make clean
+                make all
+                xt-objcopy --xtensa-core=VastaiQ7Sv100 -O binary odsp.out odsp.bin
+                chmod 644 odsp.bin
+                mv odsp.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/odsp/build/odsp.bin /home/dubuntu/aidevdev/thelatest
+                '''
+				echo '---------odsp build 6----------'
+            }
+        }
+        
+        stage('Step7: vdsp') {
+            steps {
+                echo '----------start building vdsp----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'vdsp']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:firmware/vdsp.git']]])
+                sh '''
+                pwd
+                cd vdsp
+                git checkout -f master
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+                cd project
+                mkdir -p build
+                cd build
+                pwd
+                cmake ..
+                make
+                xt-objcopy --xtensa-core=VastaiQ7Sv100  -R .dram1.data -R .dram0.data -O binary vdsp.out vdsp.bin
+                chmod 644 vdsp.bin
+                mv vdsp.bin ../
+                cp /var/lib/jenkins/workspace/bin_aidevdev/vdsp/project/vdsp.bin /home/dubuntu/aidevdev/thelatest
+                '''
+				echo '---------vdsp build 7----------'
+            }
+        }
+
+        stage('step8: build pcie package') {
+            steps {
+                echo '----------start building package----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/
+                '''
+                checkout([$class: 'GitSCM', branches: [[name: '*/ai_dev_dev']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'pcie']], userRemoteConfigs: [[credentialsId: '14964753-93a7-4afe-8944-16ae9e8862bf', url: 'git@192.168.16.6:linux/pcie.git']]])
+                
+                sh '''
+                cd pcie
+                git checkout -f ai_dev_dev
+                echo '000000000000000000'
+                export PATH=/opt/cmake-3.21.0-linux-x86_64/bin:/opt/xtensa/XtDevTools/install/tools/RI-2020.4-linux/XtensaTools/bin:$PATH
+                cmake --version
+
+                cd fw/bin_merge/
+                rm *.bin
+                cp /home/dubuntu/aidevdev/thelatest/* ./
+                mv vastai_bl1.bin ../
+                ./bin_merge.py
+                echo  'fw build ok'
+                
+                cd ../../
+                pwd
+                make
+                echo 'driver build ok'
+                
+                cd /var/lib/jenkins/workspace/bin_aidevdev/pcie/
+                sudo ./tool/mk_package.sh
+                echo 'package build ok'
+                
+                
+                '''
+                echo '----------package build OK----------'
+                script{
+                    def dateFormat = new SimpleDateFormat("yyMMdd")
+					def date = new Date()
+					riqi=dateFormat.format(date)
+					sh("mkdir -p /home/dubuntu/aidevdev/${riqi}/")
+					sh("cp /home/dubuntu/aidevdev/thelatest/* /home/dubuntu/aidevdev/${riqi}")
+					sh("cp /var/lib/jenkins/workspace/bin_aidevdev/pcie/vastai_pci* /home/dubuntu/aidevdev/${riqi}")
+					sh("cp /var/lib/jenkins/workspace/bin_aidevdev/pcie/fw/vastai_fw.bin /home/dubuntu/aidevdev/${riqi}")
+                }
+            }
+        }
+        
+        
+        stage('step9:push to gitlab ai_dev_dev'){
+            steps{
+                echo '----------start pushing pcie----------'
+                sh '''
+                cd /var/lib/jenkins/workspace/bin_aidevdev/pcie
+                git add fw
+                #git add dkms.conf 
+                #git add include/vastai_version.h
+                git commit -m "fw: update ai_dev_dev firmware"
+                git push -u origin ai_dev_dev
+                '''
+                echo '----------pcie push OK----------'
+            }
+        }
+
+
+    }
+        
+    post {
+        success {
+            emailext (
+                subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                compressLog: true,
+                attachLog: true,
+                body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+                to: "",
+                from: "wuhuwaha@163.com"
+            )
+        }
+        failure {
+            emailext (
+                subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                compressLog: true,
+                attachLog: true,
+                body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+                    <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+                to: "tao.zhang@vastaitech.com,gang.wang@vastaitech.com",
+                from: "wuhuwaha@163.com"
+            )
+        }
+    }
+}
