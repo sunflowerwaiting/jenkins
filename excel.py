@@ -1,37 +1,27 @@
-import git
-from openpyxl import Workbook,load_workbook
-import os
-from git import Repo
 
-firmware = ['AIDSP','SMCU','LMCU','CMCU','VDMCU','VDSP','VEMCU']
-tools = ['demo','profiler','common','smi','logger','debugger']
-linux = ['pcie']
-sdk = ['libva']
-AI_Compiler = ['runtime']
-
-all_Projects = {
-    'linux':linux,
-    'sdk':sdk,
-    'ai-compiler-group':AI_Compiler,
-    'tools':tools,
-    'firmware':firmware,
-
-}
-work_path = 'D:\GIT\software\\'
+from openpyxl import load_workbook
+from openpyxl import Workbook
+from openpyxl.worksheet.table import Table, TableStyleInfo
+work_path = 'D:\\GIT\\software\\'
 work_exname = 'SW_version_release.xlsx'
+store = work_path + work_exname
+def excel_table(path):
 
+    wb = load_workbook(store)
+    sheets = wb.sheetnames
+    for sheet in sheets:
+        ws = wb[sheet]
+        max= 'E'+'ws.max_column'
+        tab = Table(displayName="Table1",
+                    ref="A1:max")  # 名称管理器 如E超出数据范围出错：warn("File may not be readable: column headings must be strings.")
 
-def buildExcell(project,path,exname):
-    wb = Workbook()
-    path1 = path + exname
-    for val in project:
-        val1 = project[val]
-        for sheet in val1:
-            wb.create_sheet(sheet)
-            #wb.save('path1')
-    #wb.remove('sheet')
+        # 'TableStyleLight11' 1-21 还有此样式  "TableStyleMedium9" 1-28  TableStyleDark1  1-11
+        #  showFirstColumn=True,
+        #  showLastColumn=True, showRowStripes=True, showColumnStripes=True)
+        style = TableStyleInfo(name='TableStyleLight13', showFirstColumn=True,
+                               showLastColumn=True, showRowStripes=False, showColumnStripes=True)
+        tab.tableStyleInfo = style
+        ws.add_table(tab)
+        wb.save('D:\\GIT\\software\\SW_version_release.xlsx')
 
-    print(path1)
-    wb.save('path1')
-
-buildExcell(all_Projects,work_path,work_exname)
+excel_table(store)
