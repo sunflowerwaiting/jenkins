@@ -1,12 +1,13 @@
 from git import Repo
 import git
 import re
-from openpyxl import Workbook,load_workbook
+from openpyxl import Workbook, load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 from openpyxl.styles import Font, colors, Alignment, NamedStyle, Border, Side, Color
 from openpyxl.styles import Font  # 导入字体模块
 
 from openpyxl.styles import PatternFill
+
 '''
 import logging
 logging.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s',
@@ -17,19 +18,22 @@ logging.warning('warning 信息')
 logging.error('error 信息')
 logging.critical('critial 信息')
 '''
+
+
 ############## clone repository #############
-def pull_gitlib(list,path):
-    for val in list:
-        val1 = list[val]
+def pull_gitlib(ls, path):
+    for val in ls:
+        val1 = ls[val]
         for sheet in val1:
-            git_path = 'git@192.168.16.6:'+val+'/'+sheet+'.git'
+            git_path = 'git@192.168.16.6:' + val + '/' + sheet + '.git'
             git.Git(path).clone(git_path)
-            print('pull  '+ val + '\\' + sheet +'  pass')
+            print('pull  ' + val + '\\' + sheet + '  pass')
+
 
 ############### new a excel #####################
-def buildExcell(project,path,exname):
+def init_excel(project, output_filepath):
     wb = Workbook()
-    ws = wb.active
+    # ws = wb.active
     '''
     #this is to create  by every store
     for key in project:
@@ -68,24 +72,17 @@ def buildExcell(project,path,exname):
     tab.tableStyleInfo = style
     ws.add_table(tab)
     '''
-    wb.save('D:\\GIT\\software\\SW_version_release.xlsx')
+    # wb.save('D:\\GIT\\software\\SW_version_release.xlsx')
+    wb.save(output_filepath)
+
 
 ############## get commit message #############
-def get_commit(path,repoName):
+def get_commit(path, repoName):
     repo = Repo(path)
 
-    '''
-    ####################used json to format log massage#####################    
-    commit_log = repo.git.log('--pretty={"author":"%an","Commit Num":"%h","release date":"%cd","release note": "%s" }',
-                              max_count=50, date='format:%Y-%m-%d %H:%M')
-    log_list = commit_log.split("\n")
-    print(type(log_list))
-    real_log_list = [eval(item) for item in log_list]
-    
-    '''
-
-    # git log --simplify-by-decoration --pretty=format:%D%n%h%n%cd%n%s%n
-    commit_log = repo.git.log('--simplify-by-decoration',
+    # git log --tags --simplify-by-decoration --pretty=format:%D%n%h%n%cd%n%s%n
+    commit_log = repo.git.log('--tags',
+                              '--simplify-by-decoration',
                               '--pretty=format:%D%n%h%n%cd%n%s%n',
                               date='format:%Y-%m-%d %H:%M')
 
@@ -94,12 +91,13 @@ def get_commit(path,repoName):
     for log in log_list:
         log1 = log.split('\n')
         log1[0] = get_tag(log1[0])
-        log1.insert(0,repoName)
-        real_log_list.append(log1)
+        if log1[0]:
+            log1.insert(0, repoName)
+            real_log_list.append(log1)
     return real_log_list
 
 
-regx = re.compile(".*tag:\\s+([\\w\\.]+).*")
+regx = re.compile(".*tag:\\s*([\\w\\.-]+)\\b.*")
 
 
 # ############# use re to  match tag ##############
@@ -109,16 +107,12 @@ def get_tag(describe):
     while m:
         tags.append(m.group(1))
         m = regx.search(describe, m.end(1))
-    return ", ".join(tags) if len(tags) else describe
+    return ", ".join(tags) if len(tags) else None
     # print(describe, m.group(1))
-    # return m.group(1) if m else describe
-
 
 
 ############### insert commit to excel #############
-def add_commit_log(args, store, val):
-    wb = load_workbook(store)
-    sheet = Workbook()
+def add_commit_log(commits, wb, val):
     ws1 = wb[val]
     # high of row 1
     ws1.row_dimensions[1].height = 20
@@ -126,8 +120,8 @@ def add_commit_log(args, store, val):
     ws1.column_dimensions['B'].width = 16
     ws1.column_dimensions['D'].width = 17.89
     ws1.column_dimensions['E'].width = 104
-    wb.save(store)
-    for commit in args:
+
+    for commit in commits:
         '''
         new_commit = []
         for key in commit:
@@ -135,8 +129,6 @@ def add_commit_log(args, store, val):
         '''
 
         ws1.append(commit)
-    # wb.save('D:\\GIT\\software\\SW_version_release.xlsx')
-    wb.save(store)
 
 
 def GetExcelInfo(exname):

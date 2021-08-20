@@ -1,46 +1,35 @@
 import ComTagInsert
 from openpyxl import load_workbook
 
-
 linux = ['pcie']
 sdk = ['libva']
 AI_Compiler = ['runtime']
-firmware = ['AIDSP','SMCU','LMCU','CMCU','VDMCU','VDSP','VEMCU']
-tools = ['demo','profiler','common','smi','logger','debugger']
+firmware = ['AIDSP', 'SMCU', 'LMCU', 'CMCU', 'VDMCU', 'VDSP', 'VEMCU']
+tools = ['demo', 'profiler', 'common', 'smi', 'logger', 'debugger']
 all_Projects = {
-    'firmware':firmware,
-    'linux':linux,
-    'sdk':sdk,
-    'ai-compiler-group':AI_Compiler,
-    'tools':tools,
-
+    'firmware': firmware,
+    'linux': linux,
+    'sdk': sdk,
+    'ai-compiler-group': AI_Compiler,
+    'tools': tools,
 }
 
 work_path = 'D:\\GIT\\software\\'
 work_exname = 'SW_version_release.xlsx'
-store = work_path + work_exname
-if __name__ == "__main__":
-    '''
-    wb = load_workbook(r"d:\SW_version_release.xlsx")
-    wb1 = wb.sheetnames
-    print(wb1)
-    
-    #step 1 git fatch
-    #ComTagInsert.pull_gitlib(all_Projects,work_path)
-'''
-    #step 2 new work excel
-    ComTagInsert.buildExcell(all_Projects,work_path,work_exname)
+output_xls_path = work_path + work_exname
 
-    #step 3 get commit
-    for val in all_Projects:
-        val1 = all_Projects[val]
-        for repoName in val1:
-            path = work_path + repoName
-            log_list = ComTagInsert.get_commit(path, repoName)
+if __name__ == "__main__":
+    # step 2 new work excel
+    ComTagInsert.init_excel(all_Projects, output_xls_path)
+
+    # step 3 get commit
+    wb = load_workbook(output_xls_path)
+    for category_name in all_Projects:
+        repo_names = all_Projects[category_name]
+        for repo_name in repo_names:
+            repo_path = work_path + repo_name
+            log_list = ComTagInsert.get_commit(repo_path, repo_name)
             # steps 4 insert commit into excel
             print(log_list)
-            ComTagInsert.add_commit_log(log_list, store, val)
-
-
-
-
+            ComTagInsert.add_commit_log(log_list, wb, category_name)
+    wb.save(output_xls_path)
