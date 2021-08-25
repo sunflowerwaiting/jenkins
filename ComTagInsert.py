@@ -1,24 +1,37 @@
-from git import Repo
+import os
+
+from git import Repo, repo
+from git import RemoteProgress
 import git
 import re
 from openpyxl import Workbook, load_workbook
 
 
 ############## clone repository #############
-def pull_gitlib(ls, path):
+def clone_gitlib(ls, path):
     for val in ls:
         val1 = ls[val]
         for sheet in val1:
             git_path = 'git@192.168.16.6:' + val + '/' + sheet + '.git'
-            git.Git(path).clone(git_path)
-            print('pull  ' + val + '\\' + sheet + '  pass')
+            #git.Git(path).clone(git_path)
+            #git.Git(path).fetch(git_path)
+            print(git_path)
+            print('clone  ' + val + '\\' + sheet + '  pass')
 
-def fech_gitlib(ls, path):
-    for val in ls:
-        val1 = ls[val]
+def fetch_gitlib(allProjects, path):
+    # repo = Repo(self.rorepo.working_tree_dir)
+    for val in allProjects:
+        val1 = allProjects[val]
         for sheet in val1:
+            empty_repo = git.Repo.init(os.path.join(path, sheet))
+            print(empty_repo)
+            origin = empty_repo.create_remote('origin', repo.remotes.origin.url)
+            assert origin.exists()
+            assert origin == empty_repo.remotes.origin == empty_repo.remotes['origin']
+            origin.fetch()
             git_path = 'git@192.168.16.6:' + val + '/' + sheet + '.git'
-            git.Git(path).fetch(git_path)
+            #git.Git(path).fetch(git_path)
+
             print('pull  ' + val + '\\' + sheet + '  pass')
 
 
@@ -40,6 +53,9 @@ def init_excel(project, output_filepath):
 def get_commit(path, repoName):
     repo = Repo(path)
 
+    # fetch
+    # origin = repo.remotes['origin']
+    # origin.fetch()
     # git log --tags --simplify-by-decoration --pretty=format:%D%n%h%n%cd%n%s%n
     commit_log = repo.git.log('--tags',
                               '--simplify-by-decoration',
