@@ -13,7 +13,7 @@ def clone_gitlib(ls, path):
         val1 = ls[val]
         for sheet in val1:
             git_path = 'git@192.168.16.6:' + val + '/' + sheet + '.git'
-            #git.Git(path).clone(git_path)
+            git.Git(path).clone(git_path)
             #git.Git(path).fetch(git_path)
             print(git_path)
             print('clone  ' + val + '\\' + sheet + '  pass')
@@ -69,6 +69,7 @@ def get_commit(path, repoName):
         log1 = log.split('\n')
         log1[0] = get_tag(log1[0])
         if log1[0]:
+            print(log1[0])
             log1.insert(0, repoName)
             real_log_list.append(log1)
     return real_log_list
